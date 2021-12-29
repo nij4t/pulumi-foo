@@ -104,6 +104,14 @@ func Provider() tfbridge.ProviderInfo {
 			// Map each resource in the Terraform provider to a Pulumi function. An example
 			// is below.
 			// "aws_ami": {Tok: tfbridge.MakeDataSource(mainMod, "getAmi")},
+			"grafana_folder": {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getFolder")},
+			"grafana_synthetic_monitoring_check": {
+				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getSynteticMonitoringCheck"),
+			},
+			"grafana_synthetic_monitoring_probe": {
+				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getSynteticMonitoringProbe"),
+			},
+			"grafana_user": {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getUser")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			// List any npm dependencies and their versions
