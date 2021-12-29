@@ -1,0 +1,3165 @@
+{
+    "name": "grafana",
+    "description": "A Pulumi package for creating and managing grafana cloud resources.",
+    "keywords": [
+        "pulumi",
+        "grafana"
+    ],
+    "homepage": "https://pulumi.io",
+    "license": "Apache-2.0",
+    "attribution": "This Pulumi package is based on the [`grafana` Terraform Provider](https://github.com/terraform-providers/terraform-provider-grafana).",
+    "repository": "https://github.com/nij4t/pulumi-grafana",
+    "meta": {
+        "moduleFormat": "(.*)(?:/[^/]*)"
+    },
+    "config": {
+        "variables": {
+            "auth": {
+                "type": "string",
+                "description": "API token or basic auth username:password. May alternatively be set via the `GRAFANA_AUTH` environment variable.\n",
+                "defaultInfo": {
+                    "environment": [
+                        "GRAFANA_AUTH"
+                    ]
+                }
+            },
+            "caCert": {
+                "type": "string",
+                "description": "Certificate CA bundle to use to verify the Grafana server's certificate. May alternatively be set via the\n`GRAFANA_CA_CERT` environment variable.\n"
+            },
+            "insecureSkipVerify": {
+                "type": "boolean",
+                "description": "Skip TLS certificate verification. May alternatively be set via the `GRAFANA_INSECURE_SKIP_VERIFY` environment variable.\n"
+            },
+            "orgId": {
+                "type": "integer",
+                "description": "The organization id to operate on within grafana. May alternatively be set via the `GRAFANA_ORG_ID` environment\nvariable.\n"
+            },
+            "retries": {
+                "type": "integer",
+                "description": "The amount of retries to use for Grafana API calls. May alternatively be set via the `GRAFANA_RETRIES` environment\nvariable.\n"
+            },
+            "smAccessToken": {
+                "type": "string",
+                "description": "A Synthetic Monitoring access token. May alternatively be set via the `GRAFANA_SM_ACCESS_TOKEN` environment variable.\n"
+            },
+            "smUrl": {
+                "type": "string",
+                "description": "Synthetic monitoring backend address. May alternatively be set via the `GRAFANA_SM_URL` environment variable.\n"
+            },
+            "tlsCert": {
+                "type": "string",
+                "description": "Client TLS certificate file to use to authenticate to the Grafana server. May alternatively be set via the\n`GRAFANA_TLS_CERT` environment variable.\n"
+            },
+            "tlsKey": {
+                "type": "string",
+                "description": "Client TLS key file to use to authenticate to the Grafana server. May alternatively be set via the `GRAFANA_TLS_KEY`\nenvironment variable.\n"
+            },
+            "url": {
+                "type": "string",
+                "description": "The root URL of a Grafana server. May alternatively be set via the `GRAFANA_URL` environment variable.\n",
+                "defaultInfo": {
+                    "environment": [
+                        "GRAFANA_URL"
+                    ]
+                }
+            }
+        },
+        "defaults": [
+            "auth",
+            "orgId",
+            "url"
+        ]
+    },
+    "types": {
+        "grafana:index/BuiltinRoleAssignmentRole:BuiltinRoleAssignmentRole": {
+            "properties": {
+                "global": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "uid": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "uid"
+            ]
+        },
+        "grafana:index/DashboardPermissionPermission:DashboardPermissionPermission": {
+            "properties": {
+                "permission": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "role": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "teamId": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "userId": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "permission"
+            ]
+        },
+        "grafana:index/DataSourceJsonData:DataSourceJsonData": {
+            "properties": {
+                "assumeRoleArn": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "authType": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "authenticationType": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "clientEmail": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "connMaxLifetime": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "customMetricsNamespaces": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "defaultProject": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "defaultRegion": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "encrypt": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "esVersion": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "graphiteVersion": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "httpMethod": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "interval": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "logLevelField": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "logMessageField": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "maxConcurrentShardRequests": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "maxIdleConns": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "maxOpenConns": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "postgresVersion": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "profile": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "queryTimeout": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "sigv4AssumeRoleArn": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "sigv4Auth": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "sigv4AuthType": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "sigv4ExternalId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "sigv4Profile": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "sigv4Region": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "sslMode": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "timeField": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "timeInterval": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "timescaledb": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "tlsAuth": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "tlsAuthWithCaCert": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "tlsSkipVerify": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "tokenUri": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "tsdbResolution": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "tsdbVersion": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "grafana:index/DataSourcePermissionPermission:DataSourcePermissionPermission": {
+            "properties": {
+                "permission": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "teamId": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "userId": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "permission"
+            ]
+        },
+        "grafana:index/DataSourceSecureJsonData:DataSourceSecureJsonData": {
+            "properties": {
+                "accessKey": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "basicAuthPassword": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "password": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "privateKey": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "secretKey": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "sigv4AccessKey": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "sigv4SecretKey": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "tlsCaCert": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "tlsClientCert": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "tlsClientKey": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "grafana:index/FolderPermissionPermission:FolderPermissionPermission": {
+            "properties": {
+                "permission": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "role": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "teamId": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "userId": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "permission"
+            ]
+        },
+        "grafana:index/PlaylistItem:PlaylistItem": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "order": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "title": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "type": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "value": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "order",
+                "title"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "id",
+                        "order",
+                        "title"
+                    ]
+                }
+            }
+        },
+        "grafana:index/RolePermission:RolePermission": {
+            "properties": {
+                "action": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "scope": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "action"
+            ]
+        },
+        "grafana:index/SynteticMonitoringCheckSettings:SynteticMonitoringCheckSettings": {
+            "properties": {
+                "dns": {
+                    "$ref": "#/types/grafana:index/SynteticMonitoringCheckSettingsDns:SynteticMonitoringCheckSettingsDns",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "http": {
+                    "$ref": "#/types/grafana:index/SynteticMonitoringCheckSettingsHttp:SynteticMonitoringCheckSettingsHttp",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "ping": {
+                    "$ref": "#/types/grafana:index/SynteticMonitoringCheckSettingsPing:SynteticMonitoringCheckSettingsPing",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "tcp": {
+                    "$ref": "#/types/grafana:index/SynteticMonitoringCheckSettingsTcp:SynteticMonitoringCheckSettingsTcp",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "grafana:index/SynteticMonitoringCheckSettingsDns:SynteticMonitoringCheckSettingsDns": {
+            "properties": {
+                "ipVersion": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "port": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "protocol": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "recordType": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "server": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "sourceIpAddress": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "validRCodes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "validateAdditionalRrs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/grafana:index/SynteticMonitoringCheckSettingsDnsValidateAdditionalRr:SynteticMonitoringCheckSettingsDnsValidateAdditionalRr"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "validateAnswerRrs": {
+                    "$ref": "#/types/grafana:index/SynteticMonitoringCheckSettingsDnsValidateAnswerRrs:SynteticMonitoringCheckSettingsDnsValidateAnswerRrs",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "validateAuthorityRrs": {
+                    "$ref": "#/types/grafana:index/SynteticMonitoringCheckSettingsDnsValidateAuthorityRrs:SynteticMonitoringCheckSettingsDnsValidateAuthorityRrs",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "grafana:index/SynteticMonitoringCheckSettingsDnsValidateAdditionalRr:SynteticMonitoringCheckSettingsDnsValidateAdditionalRr": {
+            "properties": {
+                "failIfMatchesRegexps": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "failIfNotMatchesRegexps": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "grafana:index/SynteticMonitoringCheckSettingsDnsValidateAnswerRrs:SynteticMonitoringCheckSettingsDnsValidateAnswerRrs": {
+            "properties": {
+                "failIfMatchesRegexps": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "failIfNotMatchesRegexps": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "grafana:index/SynteticMonitoringCheckSettingsDnsValidateAuthorityRrs:SynteticMonitoringCheckSettingsDnsValidateAuthorityRrs": {
+            "properties": {
+                "failIfMatchesRegexps": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "failIfNotMatchesRegexps": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "grafana:index/SynteticMonitoringCheckSettingsHttp:SynteticMonitoringCheckSettingsHttp": {
+            "properties": {
+                "basicAuth": {
+                    "$ref": "#/types/grafana:index/SynteticMonitoringCheckSettingsHttpBasicAuth:SynteticMonitoringCheckSettingsHttpBasicAuth",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "bearerToken": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "body": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "cacheBustingQueryParamName": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "failIfBodyMatchesRegexps": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "failIfBodyNotMatchesRegexps": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "failIfHeaderMatchesRegexps": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/grafana:index/SynteticMonitoringCheckSettingsHttpFailIfHeaderMatchesRegexp:SynteticMonitoringCheckSettingsHttpFailIfHeaderMatchesRegexp"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "failIfHeaderNotMatchesRegexps": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/grafana:index/SynteticMonitoringCheckSettingsHttpFailIfHeaderNotMatchesRegexp:SynteticMonitoringCheckSettingsHttpFailIfHeaderNotMatchesRegexp"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "failIfNotSsl": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "failIfSsl": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "headers": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "ipVersion": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "method": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "noFollowRedirects": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "proxyUrl": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "tlsConfig": {
+                    "$ref": "#/types/grafana:index/SynteticMonitoringCheckSettingsHttpTlsConfig:SynteticMonitoringCheckSettingsHttpTlsConfig",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "validHttpVersions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "validStatusCodes": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "grafana:index/SynteticMonitoringCheckSettingsHttpBasicAuth:SynteticMonitoringCheckSettingsHttpBasicAuth": {
+            "properties": {
+                "password": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "username": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "password",
+                "username"
+            ]
+        },
+        "grafana:index/SynteticMonitoringCheckSettingsHttpFailIfHeaderMatchesRegexp:SynteticMonitoringCheckSettingsHttpFailIfHeaderMatchesRegexp": {
+            "properties": {
+                "allowMissing": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "header": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "regexp": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "header",
+                "regexp"
+            ]
+        },
+        "grafana:index/SynteticMonitoringCheckSettingsHttpFailIfHeaderNotMatchesRegexp:SynteticMonitoringCheckSettingsHttpFailIfHeaderNotMatchesRegexp": {
+            "properties": {
+                "allowMissing": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "header": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "regexp": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "header",
+                "regexp"
+            ]
+        },
+        "grafana:index/SynteticMonitoringCheckSettingsHttpTlsConfig:SynteticMonitoringCheckSettingsHttpTlsConfig": {
+            "properties": {
+                "caCert": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "clientCert": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "clientKey": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "insecureSkipVerify": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "serverName": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "grafana:index/SynteticMonitoringCheckSettingsPing:SynteticMonitoringCheckSettingsPing": {
+            "properties": {
+                "dontFragment": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "ipVersion": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "payloadSize": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "sourceIpAddress": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "grafana:index/SynteticMonitoringCheckSettingsTcp:SynteticMonitoringCheckSettingsTcp": {
+            "properties": {
+                "ipVersion": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "queryResponses": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/grafana:index/SynteticMonitoringCheckSettingsTcpQueryResponse:SynteticMonitoringCheckSettingsTcpQueryResponse"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "sourceIpAddress": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "tls": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "tlsConfig": {
+                    "$ref": "#/types/grafana:index/SynteticMonitoringCheckSettingsTcpTlsConfig:SynteticMonitoringCheckSettingsTcpTlsConfig",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "grafana:index/SynteticMonitoringCheckSettingsTcpQueryResponse:SynteticMonitoringCheckSettingsTcpQueryResponse": {
+            "properties": {
+                "expect": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "send": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "startTls": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "expect",
+                "send"
+            ]
+        },
+        "grafana:index/SynteticMonitoringCheckSettingsTcpTlsConfig:SynteticMonitoringCheckSettingsTcpTlsConfig": {
+            "properties": {
+                "caCert": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "clientCert": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "clientKey": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "insecureSkipVerify": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "serverName": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        }
+    },
+    "provider": {
+        "description": "The provider type for the grafana package. By default, resources use package-wide configuration\nsettings, however an explicit `Provider` instance may be created and passed during resource\nconstruction to achieve fine-grained programmatic control over provider settings. See the\n[documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.\n",
+        "properties": {
+            "auth": {
+                "type": "string",
+                "description": "API token or basic auth username:password. May alternatively be set via the `GRAFANA_AUTH` environment variable.\n"
+            },
+            "caCert": {
+                "type": "string",
+                "description": "Certificate CA bundle to use to verify the Grafana server's certificate. May alternatively be set via the\n`GRAFANA_CA_CERT` environment variable.\n"
+            },
+            "insecureSkipVerify": {
+                "type": "boolean",
+                "description": "Skip TLS certificate verification. May alternatively be set via the `GRAFANA_INSECURE_SKIP_VERIFY` environment variable.\n"
+            },
+            "orgId": {
+                "type": "integer",
+                "description": "The organization id to operate on within grafana. May alternatively be set via the `GRAFANA_ORG_ID` environment\nvariable.\n"
+            },
+            "retries": {
+                "type": "integer",
+                "description": "The amount of retries to use for Grafana API calls. May alternatively be set via the `GRAFANA_RETRIES` environment\nvariable.\n"
+            },
+            "smAccessToken": {
+                "type": "string",
+                "description": "A Synthetic Monitoring access token. May alternatively be set via the `GRAFANA_SM_ACCESS_TOKEN` environment variable.\n"
+            },
+            "smUrl": {
+                "type": "string",
+                "description": "Synthetic monitoring backend address. May alternatively be set via the `GRAFANA_SM_URL` environment variable.\n"
+            },
+            "tlsCert": {
+                "type": "string",
+                "description": "Client TLS certificate file to use to authenticate to the Grafana server. May alternatively be set via the\n`GRAFANA_TLS_CERT` environment variable.\n"
+            },
+            "tlsKey": {
+                "type": "string",
+                "description": "Client TLS key file to use to authenticate to the Grafana server. May alternatively be set via the `GRAFANA_TLS_KEY`\nenvironment variable.\n"
+            },
+            "url": {
+                "type": "string",
+                "description": "The root URL of a Grafana server. May alternatively be set via the `GRAFANA_URL` environment variable.\n"
+            }
+        },
+        "required": [
+            "orgId"
+        ],
+        "inputProperties": {
+            "auth": {
+                "type": "string",
+                "description": "API token or basic auth username:password. May alternatively be set via the `GRAFANA_AUTH` environment variable.\n",
+                "defaultInfo": {
+                    "environment": [
+                        "GRAFANA_AUTH"
+                    ]
+                }
+            },
+            "caCert": {
+                "type": "string",
+                "description": "Certificate CA bundle to use to verify the Grafana server's certificate. May alternatively be set via the\n`GRAFANA_CA_CERT` environment variable.\n"
+            },
+            "insecureSkipVerify": {
+                "type": "boolean",
+                "description": "Skip TLS certificate verification. May alternatively be set via the `GRAFANA_INSECURE_SKIP_VERIFY` environment variable.\n"
+            },
+            "orgId": {
+                "type": "integer",
+                "description": "The organization id to operate on within grafana. May alternatively be set via the `GRAFANA_ORG_ID` environment\nvariable.\n"
+            },
+            "retries": {
+                "type": "integer",
+                "description": "The amount of retries to use for Grafana API calls. May alternatively be set via the `GRAFANA_RETRIES` environment\nvariable.\n"
+            },
+            "smAccessToken": {
+                "type": "string",
+                "description": "A Synthetic Monitoring access token. May alternatively be set via the `GRAFANA_SM_ACCESS_TOKEN` environment variable.\n"
+            },
+            "smUrl": {
+                "type": "string",
+                "description": "Synthetic monitoring backend address. May alternatively be set via the `GRAFANA_SM_URL` environment variable.\n"
+            },
+            "tlsCert": {
+                "type": "string",
+                "description": "Client TLS certificate file to use to authenticate to the Grafana server. May alternatively be set via the\n`GRAFANA_TLS_CERT` environment variable.\n"
+            },
+            "tlsKey": {
+                "type": "string",
+                "description": "Client TLS key file to use to authenticate to the Grafana server. May alternatively be set via the `GRAFANA_TLS_KEY`\nenvironment variable.\n"
+            },
+            "url": {
+                "type": "string",
+                "description": "The root URL of a Grafana server. May alternatively be set via the `GRAFANA_URL` environment variable.\n",
+                "defaultInfo": {
+                    "environment": [
+                        "GRAFANA_URL"
+                    ]
+                }
+            }
+        },
+        "requiredInputs": [
+            "orgId"
+        ]
+    },
+    "resources": {
+        "grafana:/apiKey:ApiKey": {
+            "properties": {
+                "expiration": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "key": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "role": {
+                    "type": "string"
+                },
+                "secondsToLive": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "expiration",
+                "id",
+                "key",
+                "name",
+                "role"
+            ],
+            "inputProperties": {
+                "name": {
+                    "type": "string"
+                },
+                "role": {
+                    "type": "string"
+                },
+                "secondsToLive": {
+                    "type": "integer"
+                }
+            },
+            "requiredInputs": [
+                "role"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ApiKey resources.\n",
+                "properties": {
+                    "expiration": {
+                        "type": "string"
+                    },
+                    "id": {
+                        "type": "string"
+                    },
+                    "key": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "role": {
+                        "type": "string"
+                    },
+                    "secondsToLive": {
+                        "type": "integer"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "grafana:/builtinRoleAssignment:BuiltinRoleAssignment": {
+            "properties": {
+                "builtinRole": {
+                    "type": "string",
+                    "description": "Organization roles (`Viewer`, `Editor`, `Admin`) or `Grafana Admin` to assign the roles to.\n"
+                },
+                "roles": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/grafana:index/BuiltinRoleAssignmentRole:BuiltinRoleAssignmentRole"
+                    },
+                    "description": "Fixed or custom roles which provide granular access for specific resources within Grafana.\n"
+                }
+            },
+            "required": [
+                "builtinRole",
+                "roles"
+            ],
+            "inputProperties": {
+                "builtinRole": {
+                    "type": "string",
+                    "description": "Organization roles (`Viewer`, `Editor`, `Admin`) or `Grafana Admin` to assign the roles to.\n"
+                },
+                "roles": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/grafana:index/BuiltinRoleAssignmentRole:BuiltinRoleAssignmentRole"
+                    },
+                    "description": "Fixed or custom roles which provide granular access for specific resources within Grafana.\n"
+                }
+            },
+            "requiredInputs": [
+                "builtinRole",
+                "roles"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering BuiltinRoleAssignment resources.\n",
+                "properties": {
+                    "builtinRole": {
+                        "type": "string",
+                        "description": "Organization roles (`Viewer`, `Editor`, `Admin`) or `Grafana Admin` to assign the roles to.\n"
+                    },
+                    "roles": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/grafana:index/BuiltinRoleAssignmentRole:BuiltinRoleAssignmentRole"
+                        },
+                        "description": "Fixed or custom roles which provide granular access for specific resources within Grafana.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "grafana:/dashboard:Dashboard": {
+            "properties": {
+                "configJson": {
+                    "type": "string",
+                    "description": "The complete dashboard model JSON.\n"
+                },
+                "dashboardId": {
+                    "type": "integer",
+                    "description": "The numeric ID of the dashboard computed by Grafana.\n"
+                },
+                "folder": {
+                    "type": "integer",
+                    "description": "The id of the folder to save the dashboard in.\n"
+                },
+                "message": {
+                    "type": "string",
+                    "description": "Set a commit message for the version history.\n"
+                },
+                "overwrite": {
+                    "type": "boolean",
+                    "description": "Set to true if you want to overwrite existing dashboard with newer version, same dashboard title in folder or same\ndashboard uid.\n"
+                },
+                "slug": {
+                    "type": "string",
+                    "description": "URL friendly version of the dashboard title. This field is deprecated, please use `uid` instead.\n",
+                    "deprecationMessage": "Use `uid` instead."
+                },
+                "uid": {
+                    "type": "string",
+                    "description": "The unique identifier of a dashboard. This is used to construct its URL. It’s automatically generated if not provided\nwhen creating a dashboard. The uid allows having consistent URLs for accessing dashboards and when syncing dashboards\nbetween multiple Grafana installs.\n"
+                },
+                "version": {
+                    "type": "integer",
+                    "description": "Whenever you save a version of your dashboard, a copy of that version is saved so that previous versions of your\ndashboard are not lost.\n"
+                }
+            },
+            "required": [
+                "configJson",
+                "dashboardId",
+                "slug",
+                "uid",
+                "version"
+            ],
+            "inputProperties": {
+                "configJson": {
+                    "type": "string",
+                    "description": "The complete dashboard model JSON.\n"
+                },
+                "folder": {
+                    "type": "integer",
+                    "description": "The id of the folder to save the dashboard in.\n"
+                },
+                "message": {
+                    "type": "string",
+                    "description": "Set a commit message for the version history.\n"
+                },
+                "overwrite": {
+                    "type": "boolean",
+                    "description": "Set to true if you want to overwrite existing dashboard with newer version, same dashboard title in folder or same\ndashboard uid.\n"
+                }
+            },
+            "requiredInputs": [
+                "configJson"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Dashboard resources.\n",
+                "properties": {
+                    "configJson": {
+                        "type": "string",
+                        "description": "The complete dashboard model JSON.\n"
+                    },
+                    "dashboardId": {
+                        "type": "integer",
+                        "description": "The numeric ID of the dashboard computed by Grafana.\n"
+                    },
+                    "folder": {
+                        "type": "integer",
+                        "description": "The id of the folder to save the dashboard in.\n"
+                    },
+                    "message": {
+                        "type": "string",
+                        "description": "Set a commit message for the version history.\n"
+                    },
+                    "overwrite": {
+                        "type": "boolean",
+                        "description": "Set to true if you want to overwrite existing dashboard with newer version, same dashboard title in folder or same\ndashboard uid.\n"
+                    },
+                    "slug": {
+                        "type": "string",
+                        "description": "URL friendly version of the dashboard title. This field is deprecated, please use `uid` instead.\n",
+                        "deprecationMessage": "Use `uid` instead."
+                    },
+                    "uid": {
+                        "type": "string",
+                        "description": "The unique identifier of a dashboard. This is used to construct its URL. It’s automatically generated if not provided\nwhen creating a dashboard. The uid allows having consistent URLs for accessing dashboards and when syncing dashboards\nbetween multiple Grafana installs.\n"
+                    },
+                    "version": {
+                        "type": "integer",
+                        "description": "Whenever you save a version of your dashboard, a copy of that version is saved so that previous versions of your\ndashboard are not lost.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "grafana:/dashboardPermission:DashboardPermission": {
+            "properties": {
+                "dashboardId": {
+                    "type": "integer",
+                    "description": "ID of the dashboard to apply permissions to.\n"
+                },
+                "permissions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/grafana:index/DashboardPermissionPermission:DashboardPermissionPermission"
+                    },
+                    "description": "The permission items to add/update. Items that are omitted from the list will be removed.\n"
+                }
+            },
+            "required": [
+                "dashboardId",
+                "permissions"
+            ],
+            "inputProperties": {
+                "dashboardId": {
+                    "type": "integer",
+                    "description": "ID of the dashboard to apply permissions to.\n"
+                },
+                "permissions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/grafana:index/DashboardPermissionPermission:DashboardPermissionPermission"
+                    },
+                    "description": "The permission items to add/update. Items that are omitted from the list will be removed.\n"
+                }
+            },
+            "requiredInputs": [
+                "dashboardId",
+                "permissions"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering DashboardPermission resources.\n",
+                "properties": {
+                    "dashboardId": {
+                        "type": "integer",
+                        "description": "ID of the dashboard to apply permissions to.\n"
+                    },
+                    "permissions": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/grafana:index/DashboardPermissionPermission:DashboardPermissionPermission"
+                        },
+                        "description": "The permission items to add/update. Items that are omitted from the list will be removed.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "grafana:/dataSource:DataSource": {
+            "properties": {
+                "accessMode": {
+                    "type": "string",
+                    "description": "The method by which Grafana will access the data source: `proxy` or `direct`.\n"
+                },
+                "basicAuthEnabled": {
+                    "type": "boolean",
+                    "description": "Whether to enable basic auth for the data source.\n"
+                },
+                "basicAuthPassword": {
+                    "type": "string",
+                    "description": "Basic auth password.\n"
+                },
+                "basicAuthUsername": {
+                    "type": "string",
+                    "description": "Basic auth username.\n"
+                },
+                "databaseName": {
+                    "type": "string",
+                    "description": "(Required by some data source types) The name of the database to use on the selected data source server.\n"
+                },
+                "isDefault": {
+                    "type": "boolean",
+                    "description": "Whether to set the data source as default. This should only be `true` to a single data source.\n"
+                },
+                "jsonDatas": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/grafana:index/DataSourceJsonData:DataSourceJsonData"
+                    },
+                    "description": "(Required by some data source types)\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "A unique name for the data source.\n"
+                },
+                "password": {
+                    "type": "string",
+                    "description": "(Required by some data source types) The password to use to authenticate to the data source.\n"
+                },
+                "secureJsonDatas": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/grafana:index/DataSourceSecureJsonData:DataSourceSecureJsonData"
+                    }
+                },
+                "type": {
+                    "type": "string",
+                    "description": "The data source type. Must be one of the supported data source keywords.\n"
+                },
+                "uid": {
+                    "type": "string",
+                    "description": "Unique identifier. If unset, this will be automatically generated.\n"
+                },
+                "url": {
+                    "type": "string",
+                    "description": "The URL for the data source. The type of URL required varies depending on the chosen data source type.\n"
+                },
+                "username": {
+                    "type": "string",
+                    "description": "(Required by some data source types) The username to use to authenticate to the data source.\n"
+                }
+            },
+            "required": [
+                "name",
+                "type",
+                "uid"
+            ],
+            "inputProperties": {
+                "accessMode": {
+                    "type": "string",
+                    "description": "The method by which Grafana will access the data source: `proxy` or `direct`.\n"
+                },
+                "basicAuthEnabled": {
+                    "type": "boolean",
+                    "description": "Whether to enable basic auth for the data source.\n"
+                },
+                "basicAuthPassword": {
+                    "type": "string",
+                    "description": "Basic auth password.\n"
+                },
+                "basicAuthUsername": {
+                    "type": "string",
+                    "description": "Basic auth username.\n"
+                },
+                "databaseName": {
+                    "type": "string",
+                    "description": "(Required by some data source types) The name of the database to use on the selected data source server.\n"
+                },
+                "isDefault": {
+                    "type": "boolean",
+                    "description": "Whether to set the data source as default. This should only be `true` to a single data source.\n"
+                },
+                "jsonDatas": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/grafana:index/DataSourceJsonData:DataSourceJsonData"
+                    },
+                    "description": "(Required by some data source types)\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "A unique name for the data source.\n"
+                },
+                "password": {
+                    "type": "string",
+                    "description": "(Required by some data source types) The password to use to authenticate to the data source.\n"
+                },
+                "secureJsonDatas": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/grafana:index/DataSourceSecureJsonData:DataSourceSecureJsonData"
+                    }
+                },
+                "type": {
+                    "type": "string",
+                    "description": "The data source type. Must be one of the supported data source keywords.\n"
+                },
+                "uid": {
+                    "type": "string",
+                    "description": "Unique identifier. If unset, this will be automatically generated.\n"
+                },
+                "url": {
+                    "type": "string",
+                    "description": "The URL for the data source. The type of URL required varies depending on the chosen data source type.\n"
+                },
+                "username": {
+                    "type": "string",
+                    "description": "(Required by some data source types) The username to use to authenticate to the data source.\n"
+                }
+            },
+            "requiredInputs": [
+                "type"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering DataSource resources.\n",
+                "properties": {
+                    "accessMode": {
+                        "type": "string",
+                        "description": "The method by which Grafana will access the data source: `proxy` or `direct`.\n"
+                    },
+                    "basicAuthEnabled": {
+                        "type": "boolean",
+                        "description": "Whether to enable basic auth for the data source.\n"
+                    },
+                    "basicAuthPassword": {
+                        "type": "string",
+                        "description": "Basic auth password.\n"
+                    },
+                    "basicAuthUsername": {
+                        "type": "string",
+                        "description": "Basic auth username.\n"
+                    },
+                    "databaseName": {
+                        "type": "string",
+                        "description": "(Required by some data source types) The name of the database to use on the selected data source server.\n"
+                    },
+                    "isDefault": {
+                        "type": "boolean",
+                        "description": "Whether to set the data source as default. This should only be `true` to a single data source.\n"
+                    },
+                    "jsonDatas": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/grafana:index/DataSourceJsonData:DataSourceJsonData"
+                        },
+                        "description": "(Required by some data source types)\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "A unique name for the data source.\n"
+                    },
+                    "password": {
+                        "type": "string",
+                        "description": "(Required by some data source types) The password to use to authenticate to the data source.\n"
+                    },
+                    "secureJsonDatas": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/grafana:index/DataSourceSecureJsonData:DataSourceSecureJsonData"
+                        }
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "The data source type. Must be one of the supported data source keywords.\n"
+                    },
+                    "uid": {
+                        "type": "string",
+                        "description": "Unique identifier. If unset, this will be automatically generated.\n"
+                    },
+                    "url": {
+                        "type": "string",
+                        "description": "The URL for the data source. The type of URL required varies depending on the chosen data source type.\n"
+                    },
+                    "username": {
+                        "type": "string",
+                        "description": "(Required by some data source types) The username to use to authenticate to the data source.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "grafana:/dataSourcePermission:DataSourcePermission": {
+            "properties": {
+                "datasourceId": {
+                    "type": "integer",
+                    "description": "ID of the datasource to apply permissions to.\n"
+                },
+                "permissions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/grafana:index/DataSourcePermissionPermission:DataSourcePermissionPermission"
+                    },
+                    "description": "The permission items to add/update. Items that are omitted from the list will be removed.\n"
+                }
+            },
+            "required": [
+                "datasourceId",
+                "permissions"
+            ],
+            "inputProperties": {
+                "datasourceId": {
+                    "type": "integer",
+                    "description": "ID of the datasource to apply permissions to.\n"
+                },
+                "permissions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/grafana:index/DataSourcePermissionPermission:DataSourcePermissionPermission"
+                    },
+                    "description": "The permission items to add/update. Items that are omitted from the list will be removed.\n"
+                }
+            },
+            "requiredInputs": [
+                "datasourceId",
+                "permissions"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering DataSourcePermission resources.\n",
+                "properties": {
+                    "datasourceId": {
+                        "type": "integer",
+                        "description": "ID of the datasource to apply permissions to.\n"
+                    },
+                    "permissions": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/grafana:index/DataSourcePermissionPermission:DataSourcePermissionPermission"
+                        },
+                        "description": "The permission items to add/update. Items that are omitted from the list will be removed.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "grafana:/folder:Folder": {
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "description": "The title of the folder.\n"
+                },
+                "uid": {
+                    "type": "string",
+                    "description": "Unique identifier.\n"
+                }
+            },
+            "required": [
+                "title",
+                "uid"
+            ],
+            "inputProperties": {
+                "title": {
+                    "type": "string",
+                    "description": "The title of the folder.\n"
+                }
+            },
+            "requiredInputs": [
+                "title"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Folder resources.\n",
+                "properties": {
+                    "title": {
+                        "type": "string",
+                        "description": "The title of the folder.\n"
+                    },
+                    "uid": {
+                        "type": "string",
+                        "description": "Unique identifier.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "grafana:/folderPermission:FolderPermission": {
+            "properties": {
+                "folderUid": {
+                    "type": "string",
+                    "description": "The UID of the folder.\n"
+                },
+                "permissions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/grafana:index/FolderPermissionPermission:FolderPermissionPermission"
+                    },
+                    "description": "The permission items to add/update. Items that are omitted from the list will be removed.\n"
+                }
+            },
+            "required": [
+                "folderUid",
+                "permissions"
+            ],
+            "inputProperties": {
+                "folderUid": {
+                    "type": "string",
+                    "description": "The UID of the folder.\n"
+                },
+                "permissions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/grafana:index/FolderPermissionPermission:FolderPermissionPermission"
+                    },
+                    "description": "The permission items to add/update. Items that are omitted from the list will be removed.\n"
+                }
+            },
+            "requiredInputs": [
+                "folderUid",
+                "permissions"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering FolderPermission resources.\n",
+                "properties": {
+                    "folderUid": {
+                        "type": "string",
+                        "description": "The UID of the folder.\n"
+                    },
+                    "permissions": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/grafana:index/FolderPermissionPermission:FolderPermissionPermission"
+                        },
+                        "description": "The permission items to add/update. Items that are omitted from the list will be removed.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "grafana:/organization:Organization": {
+            "properties": {
+                "adminUser": {
+                    "type": "string",
+                    "description": "The login name of the configured default admin user for the Grafana installation. If unset, this value defaults to\nadmin, the Grafana default. Grafana adds the default admin user to all organizations automatically upon creation, and\nthis parameter keeps Terraform from removing it from organizations.\n"
+                },
+                "admins": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of email addresses corresponding to users who should be given admin access to the organization. Note: users\nspecified here must already exist in Grafana unless 'create_users' is set to true.\n"
+                },
+                "createUsers": {
+                    "type": "boolean",
+                    "description": "Whether or not to create Grafana users specified in the organization's membership if they don't already exist in\nGrafana. If unspecified, this parameter defaults to true, creating placeholder users with the name, login, and email set\nto the email of the user, and a random password. Setting this option to false will cause an error to be thrown for any\nusers that do not already exist in Grafana.\n"
+                },
+                "editors": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of email addresses corresponding to users who should be given editor access to the organization. Note: users\nspecified here must already exist in Grafana unless 'create_users' is set to true.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The display name for the Grafana organization created.\n"
+                },
+                "orgId": {
+                    "type": "integer",
+                    "description": "The organization id assigned to this organization by Grafana.\n"
+                },
+                "viewers": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of email addresses corresponding to users who should be given viewer access to the organization. Note: users\nspecified here must already exist in Grafana unless 'create_users' is set to true.\n"
+                }
+            },
+            "required": [
+                "name",
+                "orgId"
+            ],
+            "inputProperties": {
+                "adminUser": {
+                    "type": "string",
+                    "description": "The login name of the configured default admin user for the Grafana installation. If unset, this value defaults to\nadmin, the Grafana default. Grafana adds the default admin user to all organizations automatically upon creation, and\nthis parameter keeps Terraform from removing it from organizations.\n"
+                },
+                "admins": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of email addresses corresponding to users who should be given admin access to the organization. Note: users\nspecified here must already exist in Grafana unless 'create_users' is set to true.\n"
+                },
+                "createUsers": {
+                    "type": "boolean",
+                    "description": "Whether or not to create Grafana users specified in the organization's membership if they don't already exist in\nGrafana. If unspecified, this parameter defaults to true, creating placeholder users with the name, login, and email set\nto the email of the user, and a random password. Setting this option to false will cause an error to be thrown for any\nusers that do not already exist in Grafana.\n"
+                },
+                "editors": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of email addresses corresponding to users who should be given editor access to the organization. Note: users\nspecified here must already exist in Grafana unless 'create_users' is set to true.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The display name for the Grafana organization created.\n"
+                },
+                "viewers": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of email addresses corresponding to users who should be given viewer access to the organization. Note: users\nspecified here must already exist in Grafana unless 'create_users' is set to true.\n"
+                }
+            },
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Organization resources.\n",
+                "properties": {
+                    "adminUser": {
+                        "type": "string",
+                        "description": "The login name of the configured default admin user for the Grafana installation. If unset, this value defaults to\nadmin, the Grafana default. Grafana adds the default admin user to all organizations automatically upon creation, and\nthis parameter keeps Terraform from removing it from organizations.\n"
+                    },
+                    "admins": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of email addresses corresponding to users who should be given admin access to the organization. Note: users\nspecified here must already exist in Grafana unless 'create_users' is set to true.\n"
+                    },
+                    "createUsers": {
+                        "type": "boolean",
+                        "description": "Whether or not to create Grafana users specified in the organization's membership if they don't already exist in\nGrafana. If unspecified, this parameter defaults to true, creating placeholder users with the name, login, and email set\nto the email of the user, and a random password. Setting this option to false will cause an error to be thrown for any\nusers that do not already exist in Grafana.\n"
+                    },
+                    "editors": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of email addresses corresponding to users who should be given editor access to the organization. Note: users\nspecified here must already exist in Grafana unless 'create_users' is set to true.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The display name for the Grafana organization created.\n"
+                    },
+                    "orgId": {
+                        "type": "integer",
+                        "description": "The organization id assigned to this organization by Grafana.\n"
+                    },
+                    "viewers": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of email addresses corresponding to users who should be given viewer access to the organization. Note: users\nspecified here must already exist in Grafana unless 'create_users' is set to true.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "grafana:/playlist:Playlist": {
+            "properties": {
+                "interval": {
+                    "type": "string"
+                },
+                "items": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/grafana:index/PlaylistItem:PlaylistItem"
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the playlist.\n"
+                },
+                "orgId": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "interval",
+                "items",
+                "name",
+                "orgId"
+            ],
+            "inputProperties": {
+                "interval": {
+                    "type": "string"
+                },
+                "items": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/grafana:index/PlaylistItem:PlaylistItem"
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the playlist.\n"
+                }
+            },
+            "requiredInputs": [
+                "interval",
+                "items"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Playlist resources.\n",
+                "properties": {
+                    "interval": {
+                        "type": "string"
+                    },
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/grafana:index/PlaylistItem:PlaylistItem"
+                        }
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the playlist.\n"
+                    },
+                    "orgId": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "grafana:/role:Role": {
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "Description of the role.\n"
+                },
+                "global": {
+                    "type": "boolean",
+                    "description": "Boolean to state whether the role is available across all organizations or not.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the role\n"
+                },
+                "permissions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/grafana:index/RolePermission:RolePermission"
+                    },
+                    "description": "Specific set of actions granted by the role.\n"
+                },
+                "uid": {
+                    "type": "string",
+                    "description": "Unique identifier of the role. Used for assignments.\n"
+                },
+                "version": {
+                    "type": "integer",
+                    "description": "Version of the role. A role is updated only on version increase.\n"
+                }
+            },
+            "required": [
+                "name",
+                "uid",
+                "version"
+            ],
+            "inputProperties": {
+                "description": {
+                    "type": "string",
+                    "description": "Description of the role.\n"
+                },
+                "global": {
+                    "type": "boolean",
+                    "description": "Boolean to state whether the role is available across all organizations or not.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the role\n"
+                },
+                "permissions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/grafana:index/RolePermission:RolePermission"
+                    },
+                    "description": "Specific set of actions granted by the role.\n"
+                },
+                "uid": {
+                    "type": "string",
+                    "description": "Unique identifier of the role. Used for assignments.\n"
+                },
+                "version": {
+                    "type": "integer",
+                    "description": "Version of the role. A role is updated only on version increase.\n"
+                }
+            },
+            "requiredInputs": [
+                "version"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Role resources.\n",
+                "properties": {
+                    "description": {
+                        "type": "string",
+                        "description": "Description of the role.\n"
+                    },
+                    "global": {
+                        "type": "boolean",
+                        "description": "Boolean to state whether the role is available across all organizations or not.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the role\n"
+                    },
+                    "permissions": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/grafana:index/RolePermission:RolePermission"
+                        },
+                        "description": "Specific set of actions granted by the role.\n"
+                    },
+                    "uid": {
+                        "type": "string",
+                        "description": "Unique identifier of the role. Used for assignments.\n"
+                    },
+                    "version": {
+                        "type": "integer",
+                        "description": "Version of the role. A role is updated only on version increase.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "grafana:/synteticMonitoringCheck:SynteticMonitoringCheck": {
+            "properties": {
+                "alertSensitivity": {
+                    "type": "string",
+                    "description": "Can be set to `none`, `low`, `medium`, or `high` to correspond to the check [alert\nlevels](https://grafana.com/docs/grafana-cloud/synthetic-monitoring/synthetic-monitoring-alerting/).\n"
+                },
+                "basicMetricsOnly": {
+                    "type": "boolean",
+                    "description": "Metrics are reduced by default. Set this to `false` if you'd like to publish all metrics. We maintain a [full list of\nmetrics](https://github.com/grafana/synthetic-monitoring-agent/tree/main/internal/scraper/testdata) collected for each.\n"
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Whether to enable the check.\n"
+                },
+                "frequency": {
+                    "type": "integer",
+                    "description": "How often the check runs in milliseconds (the value is not truly a \"frequency\" but a \"period\"). The minimum acceptable\nvalue is 1 second (1000 ms), and the maximum is 120 seconds (120000 ms).\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "The ID of the check.\n"
+                },
+                "job": {
+                    "type": "string",
+                    "description": "Name used for job label.\n"
+                },
+                "labels": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Custom labels to be included with collected metrics and logs. The maximum number of labels that can be specified per\ncheck is 5. These are applied, along with the probe-specific labels, to the outgoing metrics. The names and values of\nthe labels cannot be empty, and the maximum length is 32 bytes.\n"
+                },
+                "probes": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    },
+                    "description": "List of probe location IDs where this target will be checked from.\n"
+                },
+                "settings": {
+                    "$ref": "#/types/grafana:index/SynteticMonitoringCheckSettings:SynteticMonitoringCheckSettings",
+                    "description": "Check settings.\n"
+                },
+                "target": {
+                    "type": "string",
+                    "description": "Hostname to ping.\n"
+                },
+                "tenantId": {
+                    "type": "integer",
+                    "description": "The tenant ID of the check.\n"
+                },
+                "timeout": {
+                    "type": "integer",
+                    "description": "Specifies the maximum running time for the check in milliseconds. The minimum acceptable value is 1 second (1000 ms),\nand the maximum 10 seconds (10000 ms).\n"
+                }
+            },
+            "required": [
+                "id",
+                "job",
+                "probes",
+                "settings",
+                "target",
+                "tenantId"
+            ],
+            "inputProperties": {
+                "alertSensitivity": {
+                    "type": "string",
+                    "description": "Can be set to `none`, `low`, `medium`, or `high` to correspond to the check [alert\nlevels](https://grafana.com/docs/grafana-cloud/synthetic-monitoring/synthetic-monitoring-alerting/).\n"
+                },
+                "basicMetricsOnly": {
+                    "type": "boolean",
+                    "description": "Metrics are reduced by default. Set this to `false` if you'd like to publish all metrics. We maintain a [full list of\nmetrics](https://github.com/grafana/synthetic-monitoring-agent/tree/main/internal/scraper/testdata) collected for each.\n"
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Whether to enable the check.\n"
+                },
+                "frequency": {
+                    "type": "integer",
+                    "description": "How often the check runs in milliseconds (the value is not truly a \"frequency\" but a \"period\"). The minimum acceptable\nvalue is 1 second (1000 ms), and the maximum is 120 seconds (120000 ms).\n"
+                },
+                "job": {
+                    "type": "string",
+                    "description": "Name used for job label.\n"
+                },
+                "labels": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Custom labels to be included with collected metrics and logs. The maximum number of labels that can be specified per\ncheck is 5. These are applied, along with the probe-specific labels, to the outgoing metrics. The names and values of\nthe labels cannot be empty, and the maximum length is 32 bytes.\n"
+                },
+                "probes": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    },
+                    "description": "List of probe location IDs where this target will be checked from.\n"
+                },
+                "settings": {
+                    "$ref": "#/types/grafana:index/SynteticMonitoringCheckSettings:SynteticMonitoringCheckSettings",
+                    "description": "Check settings.\n"
+                },
+                "target": {
+                    "type": "string",
+                    "description": "Hostname to ping.\n"
+                },
+                "timeout": {
+                    "type": "integer",
+                    "description": "Specifies the maximum running time for the check in milliseconds. The minimum acceptable value is 1 second (1000 ms),\nand the maximum 10 seconds (10000 ms).\n"
+                }
+            },
+            "requiredInputs": [
+                "job",
+                "probes",
+                "settings",
+                "target"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering SynteticMonitoringCheck resources.\n",
+                "properties": {
+                    "alertSensitivity": {
+                        "type": "string",
+                        "description": "Can be set to `none`, `low`, `medium`, or `high` to correspond to the check [alert\nlevels](https://grafana.com/docs/grafana-cloud/synthetic-monitoring/synthetic-monitoring-alerting/).\n"
+                    },
+                    "basicMetricsOnly": {
+                        "type": "boolean",
+                        "description": "Metrics are reduced by default. Set this to `false` if you'd like to publish all metrics. We maintain a [full list of\nmetrics](https://github.com/grafana/synthetic-monitoring-agent/tree/main/internal/scraper/testdata) collected for each.\n"
+                    },
+                    "enabled": {
+                        "type": "boolean",
+                        "description": "Whether to enable the check.\n"
+                    },
+                    "frequency": {
+                        "type": "integer",
+                        "description": "How often the check runs in milliseconds (the value is not truly a \"frequency\" but a \"period\"). The minimum acceptable\nvalue is 1 second (1000 ms), and the maximum is 120 seconds (120000 ms).\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The ID of the check.\n"
+                    },
+                    "job": {
+                        "type": "string",
+                        "description": "Name used for job label.\n"
+                    },
+                    "labels": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "Custom labels to be included with collected metrics and logs. The maximum number of labels that can be specified per\ncheck is 5. These are applied, along with the probe-specific labels, to the outgoing metrics. The names and values of\nthe labels cannot be empty, and the maximum length is 32 bytes.\n"
+                    },
+                    "probes": {
+                        "type": "array",
+                        "items": {
+                            "type": "integer"
+                        },
+                        "description": "List of probe location IDs where this target will be checked from.\n"
+                    },
+                    "settings": {
+                        "$ref": "#/types/grafana:index/SynteticMonitoringCheckSettings:SynteticMonitoringCheckSettings",
+                        "description": "Check settings.\n"
+                    },
+                    "target": {
+                        "type": "string",
+                        "description": "Hostname to ping.\n"
+                    },
+                    "tenantId": {
+                        "type": "integer",
+                        "description": "The tenant ID of the check.\n"
+                    },
+                    "timeout": {
+                        "type": "integer",
+                        "description": "Specifies the maximum running time for the check in milliseconds. The minimum acceptable value is 1 second (1000 ms),\nand the maximum 10 seconds (10000 ms).\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "grafana:/synteticMonitoringProbe:SynteticMonitoringProbe": {
+            "properties": {
+                "authToken": {
+                    "type": "string",
+                    "description": "The probe authentication token. Your probe must use this to authenticate with Grafana Cloud.\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "The ID of the probe.\n"
+                },
+                "labels": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Custom labels to be included with collected metrics and logs.\n"
+                },
+                "latitude": {
+                    "type": "number",
+                    "description": "Latitude coordinates.\n"
+                },
+                "longitude": {
+                    "type": "number",
+                    "description": "Longitude coordinates.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the probe.\n"
+                },
+                "public": {
+                    "type": "boolean",
+                    "description": "Public probes are run by Grafana Labs and can be used by all users. Only Grafana Labs managed public probes will be set\nto `true`.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "Region of the probe.\n"
+                },
+                "tenantId": {
+                    "type": "integer",
+                    "description": "The tenant ID of the probe.\n"
+                }
+            },
+            "required": [
+                "authToken",
+                "id",
+                "latitude",
+                "longitude",
+                "name",
+                "region",
+                "tenantId"
+            ],
+            "inputProperties": {
+                "labels": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Custom labels to be included with collected metrics and logs.\n"
+                },
+                "latitude": {
+                    "type": "number",
+                    "description": "Latitude coordinates.\n"
+                },
+                "longitude": {
+                    "type": "number",
+                    "description": "Longitude coordinates.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the probe.\n"
+                },
+                "public": {
+                    "type": "boolean",
+                    "description": "Public probes are run by Grafana Labs and can be used by all users. Only Grafana Labs managed public probes will be set\nto `true`.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "Region of the probe.\n"
+                }
+            },
+            "requiredInputs": [
+                "latitude",
+                "longitude",
+                "region"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering SynteticMonitoringProbe resources.\n",
+                "properties": {
+                    "authToken": {
+                        "type": "string",
+                        "description": "The probe authentication token. Your probe must use this to authenticate with Grafana Cloud.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The ID of the probe.\n"
+                    },
+                    "labels": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "Custom labels to be included with collected metrics and logs.\n"
+                    },
+                    "latitude": {
+                        "type": "number",
+                        "description": "Latitude coordinates.\n"
+                    },
+                    "longitude": {
+                        "type": "number",
+                        "description": "Longitude coordinates.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the probe.\n"
+                    },
+                    "public": {
+                        "type": "boolean",
+                        "description": "Public probes are run by Grafana Labs and can be used by all users. Only Grafana Labs managed public probes will be set\nto `true`.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "Region of the probe.\n"
+                    },
+                    "tenantId": {
+                        "type": "integer",
+                        "description": "The tenant ID of the probe.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "grafana:/team:Team": {
+            "properties": {
+                "email": {
+                    "type": "string",
+                    "description": "An email address for the team.\n"
+                },
+                "members": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of email addresses corresponding to users who should be given membership to the team. Note: users specified here\nmust already exist in Grafana.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The display name for the Grafana team created.\n"
+                },
+                "teamId": {
+                    "type": "integer",
+                    "description": "The team id assigned to this team by Grafana.\n"
+                }
+            },
+            "required": [
+                "name",
+                "teamId"
+            ],
+            "inputProperties": {
+                "email": {
+                    "type": "string",
+                    "description": "An email address for the team.\n"
+                },
+                "members": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of email addresses corresponding to users who should be given membership to the team. Note: users specified here\nmust already exist in Grafana.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The display name for the Grafana team created.\n"
+                }
+            },
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Team resources.\n",
+                "properties": {
+                    "email": {
+                        "type": "string",
+                        "description": "An email address for the team.\n"
+                    },
+                    "members": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of email addresses corresponding to users who should be given membership to the team. Note: users specified here\nmust already exist in Grafana.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The display name for the Grafana team created.\n"
+                    },
+                    "teamId": {
+                        "type": "integer",
+                        "description": "The team id assigned to this team by Grafana.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "grafana:/teamExternalGroup:TeamExternalGroup": {
+            "properties": {
+                "groups": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The team external groups list\n"
+                },
+                "teamId": {
+                    "type": "integer",
+                    "description": "The Team ID\n"
+                }
+            },
+            "required": [
+                "groups",
+                "teamId"
+            ],
+            "inputProperties": {
+                "groups": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The team external groups list\n"
+                },
+                "teamId": {
+                    "type": "integer",
+                    "description": "The Team ID\n"
+                }
+            },
+            "requiredInputs": [
+                "groups",
+                "teamId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering TeamExternalGroup resources.\n",
+                "properties": {
+                    "groups": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The team external groups list\n"
+                    },
+                    "teamId": {
+                        "type": "integer",
+                        "description": "The Team ID\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "grafana:/temPreferences:TemPreferences": {
+            "properties": {
+                "homeDashboardId": {
+                    "type": "integer",
+                    "description": "The numeric ID of the dashboard to display when a team member logs in.\n"
+                },
+                "teamId": {
+                    "type": "integer",
+                    "description": "The numeric team ID.\n"
+                },
+                "theme": {
+                    "type": "string",
+                    "description": "The theme for the specified team. Available themes are `light`, `dark`, or an empty string for the default theme.\n"
+                },
+                "timezone": {
+                    "type": "string",
+                    "description": "The timezone for the specified team. Available values are `utc`, `browser`, or an empty string for the default.\n"
+                }
+            },
+            "required": [
+                "teamId"
+            ],
+            "inputProperties": {
+                "homeDashboardId": {
+                    "type": "integer",
+                    "description": "The numeric ID of the dashboard to display when a team member logs in.\n"
+                },
+                "teamId": {
+                    "type": "integer",
+                    "description": "The numeric team ID.\n"
+                },
+                "theme": {
+                    "type": "string",
+                    "description": "The theme for the specified team. Available themes are `light`, `dark`, or an empty string for the default theme.\n"
+                },
+                "timezone": {
+                    "type": "string",
+                    "description": "The timezone for the specified team. Available values are `utc`, `browser`, or an empty string for the default.\n"
+                }
+            },
+            "requiredInputs": [
+                "teamId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering TemPreferences resources.\n",
+                "properties": {
+                    "homeDashboardId": {
+                        "type": "integer",
+                        "description": "The numeric ID of the dashboard to display when a team member logs in.\n"
+                    },
+                    "teamId": {
+                        "type": "integer",
+                        "description": "The numeric team ID.\n"
+                    },
+                    "theme": {
+                        "type": "string",
+                        "description": "The theme for the specified team. Available themes are `light`, `dark`, or an empty string for the default theme.\n"
+                    },
+                    "timezone": {
+                        "type": "string",
+                        "description": "The timezone for the specified team. Available values are `utc`, `browser`, or an empty string for the default.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "grafana:/user:User": {
+            "properties": {
+                "email": {
+                    "type": "string",
+                    "description": "The email address of the Grafana user.\n"
+                },
+                "isAdmin": {
+                    "type": "boolean",
+                    "description": "Whether to make user an admin.\n"
+                },
+                "login": {
+                    "type": "string",
+                    "description": "The username for the Grafana user.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The display name for the Grafana user.\n"
+                },
+                "password": {
+                    "type": "string",
+                    "description": "The password for the Grafana user.\n"
+                },
+                "userId": {
+                    "type": "integer",
+                    "description": "The numerical ID of the Grafana user.\n"
+                }
+            },
+            "required": [
+                "email",
+                "name",
+                "password",
+                "userId"
+            ],
+            "inputProperties": {
+                "email": {
+                    "type": "string",
+                    "description": "The email address of the Grafana user.\n"
+                },
+                "isAdmin": {
+                    "type": "boolean",
+                    "description": "Whether to make user an admin.\n"
+                },
+                "login": {
+                    "type": "string",
+                    "description": "The username for the Grafana user.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The display name for the Grafana user.\n"
+                },
+                "password": {
+                    "type": "string",
+                    "description": "The password for the Grafana user.\n"
+                }
+            },
+            "requiredInputs": [
+                "email",
+                "password"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering User resources.\n",
+                "properties": {
+                    "email": {
+                        "type": "string",
+                        "description": "The email address of the Grafana user.\n"
+                    },
+                    "isAdmin": {
+                        "type": "boolean",
+                        "description": "Whether to make user an admin.\n"
+                    },
+                    "login": {
+                        "type": "string",
+                        "description": "The username for the Grafana user.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The display name for the Grafana user.\n"
+                    },
+                    "password": {
+                        "type": "string",
+                        "description": "The password for the Grafana user.\n"
+                    },
+                    "userId": {
+                        "type": "integer",
+                        "description": "The numerical ID of the Grafana user.\n"
+                    }
+                },
+                "type": "object"
+            }
+        }
+    },
+    "functions": {
+        "grafana:/getFolder:getFolder": {
+            "inputs": {
+                "description": "A collection of arguments for invoking getFolder.\n",
+                "properties": {
+                    "title": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "title"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getFolder.\n",
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "title": {
+                        "type": "string"
+                    },
+                    "uid": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id",
+                    "title",
+                    "uid"
+                ]
+            }
+        },
+        "grafana:/getSynteticMonitoringProbe:getSynteticMonitoringProbe": {
+            "inputs": {
+                "description": "A collection of arguments for invoking getSynteticMonitoringProbe.\n",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "name"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getSynteticMonitoringProbe.\n",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "labels": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        }
+                    },
+                    "latitude": {
+                        "type": "number"
+                    },
+                    "longitude": {
+                        "type": "number"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "public": {
+                        "type": "boolean"
+                    },
+                    "region": {
+                        "type": "string"
+                    },
+                    "tenantId": {
+                        "type": "integer"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id",
+                    "labels",
+                    "latitude",
+                    "longitude",
+                    "name",
+                    "public",
+                    "region",
+                    "tenantId"
+                ]
+            }
+        },
+        "grafana:/getSynteticMonitoringProbes:getSynteticMonitoringProbes": {
+            "outputs": {
+                "description": "A collection of values returned by getSynteticMonitoringProbes.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "probes": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "integer"
+                        }
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "probes",
+                    "id"
+                ]
+            }
+        },
+        "grafana:/getUser:getUser": {
+            "inputs": {
+                "description": "A collection of arguments for invoking getUser.\n",
+                "properties": {
+                    "email": {
+                        "type": "string"
+                    },
+                    "login": {
+                        "type": "string"
+                    },
+                    "userId": {
+                        "type": "integer"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getUser.\n",
+                "properties": {
+                    "email": {
+                        "type": "string"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "isAdmin": {
+                        "type": "boolean"
+                    },
+                    "login": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "userId": {
+                        "type": "integer"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "isAdmin",
+                    "name",
+                    "id"
+                ]
+            }
+        }
+    },
+    "language": {
+        "csharp": {
+            "compatibility": "tfbridge20",
+            "namespaces": null,
+            "packageReferences": {
+                "Pulumi": "3.*"
+            }
+        },
+        "go": {
+            "generateResourceContainerTypes": true,
+            "importBasePath": "github.com/pulumi/pulumi-grafana/sdk/go/grafana"
+        },
+        "nodejs": {
+            "compatibility": "tfbridge20",
+            "dependencies": {
+                "@pulumi/pulumi": "^3.0.0"
+            },
+            "devDependencies": {
+                "@types/mime": "^2.0.0",
+                "@types/node": "^10.0.0"
+            },
+            "disableUnionOutputTypes": true,
+            "packageDescription": "A Pulumi package for creating and managing grafana cloud resources.",
+            "packageName": "",
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/terraform-providers/terraform-provider-grafana)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi/pulumi-grafana` repo](https://github.com/pulumi/pulumi-grafana/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-providers/terraform-provider-grafana` repo](https://github.com/terraform-providers/terraform-provider-grafana/issues).",
+            "typescriptVersion": ""
+        },
+        "python": {
+            "compatibility": "tfbridge20",
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/terraform-providers/terraform-provider-grafana)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi/pulumi-grafana` repo](https://github.com/pulumi/pulumi-grafana/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-providers/terraform-provider-grafana` repo](https://github.com/terraform-providers/terraform-provider-grafana/issues).",
+            "requires": {
+                "pulumi": "\u003e=3.0.0,\u003c4.0.0"
+            }
+        }
+    }
+}

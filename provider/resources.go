@@ -59,13 +59,11 @@ func Provider() tfbridge.ProviderInfo {
 		Repository:  "https://github.com/nij4t/pulumi-grafana",
 		Config: map[string]*tfbridge.SchemaInfo{
 			"auth": {
-				Type: tfbridge.MakeType(mainPkg, mainMod, "Auth"),
 				Default: &tfbridge.DefaultInfo{
 					EnvVars: []string{"GRAFANA_AUTH"},
 				},
 			},
 			"url": {
-				Type: tfbridge.MakeType(mainPkg, mainMod, "Url"),
 				Default: &tfbridge.DefaultInfo{
 					EnvVars: []string{"GRAFANA_URL"},
 				},
@@ -105,11 +103,11 @@ func Provider() tfbridge.ProviderInfo {
 			// is below.
 			// "aws_ami": {Tok: tfbridge.MakeDataSource(mainMod, "getAmi")},
 			"grafana_folder": {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getFolder")},
-			"grafana_synthetic_monitoring_check": {
-				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getSynteticMonitoringCheck"),
-			},
 			"grafana_synthetic_monitoring_probe": {
 				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getSynteticMonitoringProbe"),
+			},
+			"grafana_synthetic_monitoring_probes": {
+				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getSynteticMonitoringProbes"),
 			},
 			"grafana_user": {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getUser")},
 		},
