@@ -32,7 +32,7 @@ const (
 	// registries for nodejs and python:
 	mainPkg = "grafana"
 	// modules:
-	mainMod = "index" // the grafana module
+	mainMod = "" // the grafana module
 )
 
 // preConfigureCallback is called before the providerConfigure function of the underlying provider.
@@ -46,7 +46,7 @@ func preConfigureCallback(vars resource.PropertyMap, c shim.ResourceConfig) erro
 // Provider returns additional overlaid schema and metadata associated with the provider..
 func Provider() tfbridge.ProviderInfo {
 	// Instantiate the Terraform provider
-	p := shimv2.NewProvider(grafana.Provider())
+	p := shimv2.NewProvider(grafana.Provider("v1.17.0")())
 
 	// Create a Pulumi provider mapping
 	prov := tfbridge.ProviderInfo{
@@ -57,30 +57,48 @@ func Provider() tfbridge.ProviderInfo {
 		License:     "Apache-2.0",
 		Homepage:    "https://pulumi.io",
 		Repository:  "https://github.com/nij4t/pulumi-grafana",
-		Config:      map[string]*tfbridge.SchemaInfo{
-			// Add any required configuration here, or remove the example below if
-			// no additional points are required.
-			// "region": {
-			// 	Type: tfbridge.MakeType("region", "Region"),
-			// 	Default: &tfbridge.DefaultInfo{
-			// 		EnvVars: []string{"AWS_REGION", "AWS_DEFAULT_REGION"},
-			// 	},
-			// },
+		Config: map[string]*tfbridge.SchemaInfo{
+			"auth": {
+				Type: tfbridge.MakeType(mainPkg, mainMod, "Auth"),
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"GRAFANA_AUTH"},
+				},
+			},
+			"url": {
+				Type: tfbridge.MakeType(mainPkg, mainMod, "Url"),
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"GRAFANA_URL"},
+				},
+			},
 		},
 		PreConfigureCallback: preConfigureCallback,
-		Resources:            map[string]*tfbridge.ResourceInfo{
-			// Map each resource in the Terraform provider to a Pulumi type. Two examples
-			// are below - the single line form is the common case. The multi-line form is
-			// needed only if you wish to override types or other default options.
-			//
-			// "aws_iam_role": {Tok: tfbridge.MakeResource(mainMod, "IamRole")}
-			//
-			// "aws_acm_certificate": {
-			// 	Tok: tfbridge.MakeResource(mainMod, "Certificate"),
-			// 	Fields: map[string]*tfbridge.SchemaInfo{
-			// 		"tags": {Type: tfbridge.MakeType(mainPkg, "Tags")},
-			// 	},
-			// },
+		Resources: map[string]*tfbridge.ResourceInfo{
+			// Map each resource in the Terraform provider to a Pulumi type.
+			"grafana_api_key": {Tok: tfbridge.MakeResource(mainPkg, mainMod, "ApiKey")},
+			"grafana_builtin_role_assignment": {
+				Tok: tfbridge.MakeResource(mainPkg, mainMod, "BuiltinRoleAssignment"),
+			},
+			"grafana_dashboard":            {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Dashboard")},
+			"grafana_dashboard_permission": {Tok: tfbridge.MakeResource(mainPkg, mainMod, "DashboardPermission")},
+			"grafana_data_source":          {Tok: tfbridge.MakeResource(mainPkg, mainMod, "DataSource")},
+			"grafana_data_source_permission": {
+				Tok: tfbridge.MakeResource(mainPkg, mainMod, "DataSourcePermission"),
+			},
+			"grafana_folder":            {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Folder")},
+			"grafana_folder_permission": {Tok: tfbridge.MakeResource(mainPkg, mainMod, "FolderPermission")},
+			"grafana_organization":      {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Organization")},
+			"grafana_playlist":          {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Playlist")},
+			"grafana_role":              {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Role")},
+			"grafana_synthetic_monitoring_check": {
+				Tok: tfbridge.MakeResource(mainPkg, mainMod, "SynteticMonitoringCheck"),
+			},
+			"grafana_synthetic_monitoring_probe": {
+				Tok: tfbridge.MakeResource(mainPkg, mainMod, "SynteticMonitoringProbe"),
+			},
+			"grafana_team":                {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Team")},
+			"grafana_team_external_group": {Tok: tfbridge.MakeResource(mainPkg, mainMod, "TeamExternalGroup")},
+			"grafana_team_preferences":    {Tok: tfbridge.MakeResource(mainPkg, mainMod, "TemPreferences")},
+			"grafana_user":                {Tok: tfbridge.MakeResource(mainPkg, mainMod, "User")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			// Map each resource in the Terraform provider to a Pulumi function. An example
