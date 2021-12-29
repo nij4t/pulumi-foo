@@ -1,7 +1,7 @@
 PROJECT_NAME := grafana Package
 
 PACK             := grafana
-ORG              := pulumi
+ORG              := nij4t
 PROJECT          := github.com/${ORG}/pulumi-${PACK}
 NODE_MODULE_NAME := @pulumi/${PACK}
 TF_NAME          := ${PACK}
