@@ -1,4 +1,4 @@
-module github.com/pulumi/pulumi-xyz/sdk
+module github.com/nij4t/pulumi-grafana/sdk
 
 go 1.16
 
