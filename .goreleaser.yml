@@ -1,9 +1,9 @@
 archives:
 - id: archive
   name_template: '{{ .Binary }}-{{ .Tag }}-{{ .Os }}-{{ .Arch }}'
-before:
-  hooks:
-  - 'make VERSION={{ .Tag }} tfgen'
+# before:
+#   hooks:
+#   - 'make VERSION={{ .Tag }} tfgen'
 builds:
 - binary: pulumi-resource-grafana
   dir: provider
