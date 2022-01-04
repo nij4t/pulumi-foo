@@ -3,7 +3,7 @@ archives:
   name_template: '{{ .Binary }}-{{ .Tag }}-{{ .Os }}-{{ .Arch }}'
 before:
   hooks:
-  - make tfgen
+  - 'make VERSION={{ .Tag }} tfgen'
 builds:
 - binary: pulumi-resource-grafana
   dir: provider
