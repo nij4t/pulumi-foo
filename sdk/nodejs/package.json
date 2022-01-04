@@ -1,5 +1,5 @@
 {
-    "name": "@pulumi/grafana",
+    "name": "@nij4t/grafana",
     "version": "${VERSION}",
     "description": "A Pulumi package for creating and managing grafana cloud resources.",
     "keywords": [
@@ -21,6 +21,7 @@
         "typescript": "^4.3.5"
     },
     "pulumi": {
-        "resource": true
+        "resource": true,
+        "pluginDownloadURL": "https://github.com/nij4t/pulumi-grafana/releases/download/v0.0.1-rc.1/"
     }
 }
