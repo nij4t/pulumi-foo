@@ -122,3 +122,15 @@ install_sdks:: install_dotnet_sdk install_python_sdk install_nodejs_sdk
 test::
 	cd examples && go test -v -tags=all -parallel ${TESTPARALLELISM} -timeout 2h
 
+release:: install_goreleaser
+	goreleaser release --rm-dist
+
+install_goreleaser::
+	which goreleaser || go install github.com/goreleaser/goreleaser@latest
+
+npm_publish:: inject_install_script
+	cd sdk/nodejs/bin && npm publish
+
+inject_install_script:: build_nodejs
+	node scripts/add-plugin-installer-script.js
+
