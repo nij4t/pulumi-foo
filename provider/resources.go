@@ -57,6 +57,11 @@ func Provider() tfbridge.ProviderInfo {
 		License:     "Apache-2.0",
 		Homepage:    "https://pulumi.io",
 		Repository:  "https://github.com/nij4t/pulumi-grafana",
+		Publisher:   "nij4t",
+		PluginDownloadURL: fmt.Sprintf(
+			"https://github.com/nij4t/pulumi-grafana/releases/download/%s/",
+			version.Version,
+		),
 		Config: map[string]*tfbridge.SchemaInfo{
 			"auth": {
 				Default: &tfbridge.DefaultInfo{
@@ -112,6 +117,7 @@ func Provider() tfbridge.ProviderInfo {
 			"grafana_user": {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getUser")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
+			PackageName: "@nij4t/grafana",
 			// List any npm dependencies and their versions
 			Dependencies: map[string]string{
 				"@pulumi/pulumi": "^3.0.0",
